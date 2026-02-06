@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VDR | The Silent Survivor</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Inter:wght@400;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #020202;
+            color: #888;
+            font-family: 'Inter', sans-serif;
+        }
+        .vidar-font { font-family: 'UnifrakturMaguntia', serif; }
+        .void-glow { filter: drop-shadow(0 0 15px rgba(139, 0, 0, 0.4)); }
+        .survivor-gradient {
+            background: linear-gradient(to bottom, #111 0%, #020202 100%);
+        }
+        .glitch-hover:hover {
+            color: #ff0055;
+            text-shadow: 2px 2px #5500ff;
+        }
+    </style>
+</head>
+<body class="survivor-gradient min-h-screen">
+
+    <nav class="p-10 flex justify-center space-x-12 text-[10px] uppercase tracking-[0.5em]">
+        <a href="https://yourusername.github.io/" class="hover:text-white transition">Váli Hub</a>
+        <a href="https://yourusername.github.io/atrx" class="hover:text-white transition">ATRX</a>
+        <a href="https://yourusername.github.io/arch" class="hover:text-white transition">ARCH</a>
+    </nav>
+
+    <main class="max-w-3xl mx-auto text-center px-6 mt-16">
+        
+        <div class="mb-12 inline-block">
+            <img src="https://coral-absolute-shrimp-168.mypinata.cloud/ipfs/bafybeih6ajbbvekf5scpj2cjdmpmp7o3kbvd4ebrk7d4ftvci4jed6ii2i" 
+                 alt="Vidar Survivor" class="w-64 h-64 md:w-80 md:h-80 object-cover rounded-full border border-white/5 void-glow grayscale">
+        </div>
+
+        <h1 class="vidar-font text-6xl md:text-8xl text-white mb-6">Vidar</h1>
+        
+        <p class="text-sm uppercase tracking-[0.2em] text-red-900 font-bold mb-8 italic">
+            "The world ends. We remain."
+        </p>
+
+        <div class="max-w-lg mx-auto mb-16 space-y-6 text-gray-400 leading-relaxed">
+            <p>
+                $VDR is the final pillar. While the market cycles destroy the weak, Vidar stands in silence. A fixed supply of 99,999,999—symbolizing the end of the old cycle and the birth of the new.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-20">
+            <div class="bg-white/5 border border-white/10 p-8 rounded-sm">
+                <span class="block text-[10px] uppercase mb-2">Finality Magnitude</span>
+                <span class="text-3xl font-black text-white">99,999,999</span>
+            </div>
+            <div class="bg-white/5 border border-white/10 p-8 rounded-sm">
+                <span class="block text-[10px] uppercase mb-2">Protocol Status</span>
+                <span class="text-3xl font-black text-white italic">SURVIVOR</span>
+            </div>
+        </div>
+
+        <div class="bg-red-950/10 border border-red-900/20 p-6 rounded-lg mb-40">
+            <p class="text-[10px] uppercase text-red-900 font-black mb-2">Contract Verification Required</p>
+            <code class="text-xs text-gray-500 break-all">PASTE_YOUR_VDR_MINT_ADDRESS_HERE</code>
+        </div>
+
+    </main>
+
+    <footer class="pb-20 text-center">
+        <div class="flex justify-center space-x-6 mb-8">
+            <a href="https://raydium.io" class="bg-white text-black px-10 py-3 text-xs font-black uppercase tracking-widest hover:invert transition">Acquire $VDR</a>
+        </div>
+        <p class="text-[9px] uppercase tracking-[1em] text-gray-800">Designed by Váli • 2026</p>
+    </footer>
+
+</body>
+</html>
