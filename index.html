@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VDR | The Survivor Pillar</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;700&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body { background-color: #020202; color: #f0f0f0; font-family: 'Space Grotesk', sans-serif; }
+        .norse-font { font-family: 'Cinzel', serif; }
+        .monolith { background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.05); }
+        .structural-line { height: 1px; width: 100%; background: linear-gradient(90deg, transparent, rgba(153, 27, 27, 0.5), transparent); }
+        
+        @media (max-width: 640px) {
+            .header-text { font-size: 3.5rem; }
+        }
+    </style>
+</head>
+<body class="bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-red-950/40 via-black to-black min-h-screen">
+
+<div id="gatekeeper-overlay" style="display: none;">
+        <div id="gatekeeper-modal">
+            <h2 id="display-title">SECURITY NOTICE</h2>
+            <p id="display-message">Initialising...</p>
+            <button id="confirm-btn" onclick="validateEntry()">Proceed</button>
+        </div>
+    </div>
+    
+    <script>
+        const PROJECT_ID = "vdr_token"; 
+        const PROJECT_NAME = "Vidar ($VDR)"; 
+        const MODAL_TITLE = "⚠️ RISK DISCLOSURE";
+        const EXPIRY_DAYS = 30;
+    
+        const style = document.createElement('style');
+        style.innerHTML = `
+            #gatekeeper-overlay {
+                position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+                background: rgba(0, 0, 0, 0.97); z-index: 10000;
+                display: flex; align-items: center; justify-content: center;
+                backdrop-filter: blur(10px); font-family: sans-serif;
+            }
+            #gatekeeper-modal {
+                background: #0a0a0a; color: #fff; padding: 40px; 
+                border-radius: 2px; max-width: 480px; width: 85%;
+                text-align: center; border: 1px solid #444;
+            }
+            #gatekeeper-modal h2 { margin-top: 0; font-size: 20px; letter-spacing: 1px; }
+            #gatekeeper-modal p { font-size: 14px; line-height: 1.6; color: #888; margin: 25px 0; }
+            #confirm-btn {
+                background: #fff; color: #000; padding: 12px 35px; 
+                border: none; cursor: pointer; font-weight: bold;
+            }
+        `;
+        document.head.appendChild(style);
+    
+        const overlay = document.getElementById('gatekeeper-overlay');
+        const msgBlock = document.getElementById('display-message');
+        const titleBlock = document.getElementById('display-title');
+        const storageKey = 'gatekeeper_' + PROJECT_ID;
+    
+        function validateEntry() {
+            const now = new Date();
+            localStorage.setItem(storageKey, now.getTime());
+            overlay.style.display = 'none';
+        }
+    
+        window.addEventListener('DOMContentLoaded', () => {
+            const lastAccepted = localStorage.getItem(storageKey);
+            const now = new Date().getTime();
+            const thirtyDaysInMs = EXPIRY_DAYS * 24 * 60 * 60 * 1000;
+    
+            if (!lastAccepted || (now - lastAccepted) > thirtyDaysInMs) {
+                titleBlock.innerText = MODAL_TITLE;
+                msgBlock.innerHTML = `${PROJECT_NAME} is a digital collectible on the Solana blockchain. It carries no intrinsic value and is intended for entertainment purposes. By proceeding, you acknowledge that you are not purchasing a security, financial instrument, or investment contract.`;
+                overlay.style.display = 'flex';
+            }
+        });
+    </script>
+    
+    <nav class="flex justify-between items-center p-8 max-w-6xl mx-auto">
+        <a href="https://vali-protocol.github.io/" class="norse-font text-2xl font-bold tracking-widest text-white hover:text-red-600 transition-colors">VÁLI</a>
+        <div class="space-x-8 hidden md:flex text-[10px] uppercase tracking-[0.3em] text-white/50">
+            <span class="hover:text-white cursor-help transition">Resonance: Final</span>
+            <span class="hover:text-white cursor-help transition">Phase: III</span>
+        </div>
+        <a href="https://raydium.io" class="border border-red-900/30 px-6 py-2 text-[10px] uppercase font-bold tracking-widest hover:bg-red-600 hover:text-white transition-all duration-300">Market</a>
+    </nav>
+
+    <main class="max-w-6xl mx-auto px-6 pt-12 pb-32">
+        <div class="grid md:grid-cols-2 gap-16 items-center">
+            
+            <div class="relative group">
+                <div class="absolute -top-4 -left-4 w-20 h-20 border-t border-l border-red-800/60 transition-all group-hover:-top-6 group-hover:-left-6"></div>
+                
+                <img src="https://coral-absolute-shrimp-168.mypinata.cloud/ipfs/bafybeih6ajbbvekf5scpj2cjdmpmp7o3kbvd4ebrk7d4ftvci4jed6ii2i" 
+                     alt="VDR Survivor" class="w-full rounded-sm object-cover shadow-2xl">
+                
+                <div class="absolute -bottom-4 -right-4 w-20 h-20 border-b border-r border-red-800/60 transition-all group-hover:-bottom-6 group-hover:-right-6"></div>
+            </div>
+
+            <div class="space-y-8">
+                <h1 class="norse-font header-text text-7xl md:text-8xl font-black text-white leading-none tracking-tighter mb-4 uppercase">
+                    THE<br>SURVIVOR.
+                </h1>
+                <div class="structural-line mb-8"></div>
+                
+                <div class="space-y-6">
+                    <p class="text-zinc-300 text-lg leading-relaxed font-light">
+                        $VDR is the final pillar. The silence that follows the echo. It represents the ultimate endurance of the Trinity.
+                    </p>
+                    <div class="bg-red-950/20 p-6 border-l-2 border-red-700/50">
+                        <p class="text-zinc-400 text-sm font-light italic leading-relaxed">
+                            The third gate remains locked until the resonance of the first two achieves perfect symmetry. 
+                            <span class="text-zinc-200 font-bold">The Eight Nines appear only to those who do not blink.</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="monolith p-6 rounded-sm">
+                        <div class="text-[10px] uppercase text-white/50 mb-2 font-bold tracking-widest">Total Circulation</div>
+                        <div class="text-2xl font-black text-white leading-tight">99,999,999</div>
+                        <div class="text-[9px] text-red-600/60 mt-1 tracking-widest uppercase font-bold">The Eight Nines</div>
+                    </div>
+                    <div class="monolith p-6 rounded-sm">
+                        <div class="text-[10px] uppercase text-white/50 mb-2 font-bold tracking-widest">Status</div>
+                        <div class="text-2xl font-black text-white italic">LOCKED</div>
+                        <div class="text-[9px] text-red-600/60 mt-1 tracking-widest uppercase font-bold">The Last Pillar</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-32 monolith p-8 rounded-sm text-center border-red-900/10">
+            <p class="text-[10px] uppercase text-red-900 font-black mb-4 tracking-[0.4em]">Finality Verification Required</p>
+            <code class="text-zinc-500 break-all text-sm md:text-lg font-mono tracking-tight">...</code>
+        </div>
+    </main>
+
+    <footer class="py-16 border-t border-white/5 text-center">
+        <div class="flex flex-wrap justify-center gap-8 mb-12 px-6">
+            <a href="https://vali-protocol.github.io/" class="text-[10px] text-white/40 hover:text-white uppercase font-bold tracking-[0.3em] transition">Váli Hub</a>
+            <a href="https://vali-protocol.github.io/atrx" class="text-[10px] text-white/40 hover:text-white uppercase font-bold tracking-[0.3em] transition">ATRX Wisdom</a>
+            <a href="https://vali-protocol.github.io/arch" class="text-[10px] text-white/40 hover:text-white uppercase font-bold tracking-[0.3em] transition">ARCH Foundation</a>
+        </div>
+        <p class="text-[9px] text-white/10 uppercase tracking-[1em]">
+            © 2026 VDR Protocol | The Survivor
+        </p>
+    </footer>
+
+<div style="padding: 40px 20px; font-size: 12px; color: #888; border-top: 1px solid #333; text-align: center; font-family: sans-serif;">
+    <p style="max-width: 800px; margin: 10px auto;">
+        Disclaimer: $VDR is a meme coin with no expectation of financial return. The team does not provide financial or legal advice. 
+        Ownership of $VDR does not represent a share in any company or entity. Participation in the Solana ecosystem carries 
+        high risk; never contribute more than you can afford to lose. All trademarked assets are for community use only.
+    </p>
+</div>
+
+</body>
+</html>
